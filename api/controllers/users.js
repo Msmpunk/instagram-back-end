@@ -50,7 +50,6 @@ export async function getUsers(req, res){
         });
 
     } catch (error) {
-        console.log("TCL: getUsers -> error", error)
         return res.status(500).json({
             error: 'Hay error en el servidor',
             ok: false

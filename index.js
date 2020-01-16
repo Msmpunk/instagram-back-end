@@ -10,7 +10,6 @@ import { db_host, db_name, port } from './api/config/config'
 const app = express();
 const models_path = path.join(__dirname, './api/models')
 fs.readdirSync(models_path).forEach((file) => {
-    console.log("TCL: flie", file)
     require(models_path+'/'+file)
 })
 // CORS
