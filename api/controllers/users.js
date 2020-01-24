@@ -89,6 +89,40 @@ export async function updateUser(req, res){
 
 
     } catch (error) {
+        return res.status(500).json({
+            error: 'Hay error en el servidor',
+            ok: false
+        })
+        
+    }
+}
+    
+export async function getUser(req, res){
+    try {
+        const { userId } = req.params
+
+        const user = await User.findById(userId)
+
+        if(!user){
+            return res.status(400).json({
+                ok: false,
+                message: 'El usuario no existe'
+            }) 
+        }
+
+        user.password = ':)'
+
+        return res.status(200).json({
+            ok: true,
+            user: user,
+        });
+
+
+    } catch (error) {
+        return res.status(500).json({
+            error: 'Hay error en el servidor',
+            ok: false
+        })
         
     }
 }
